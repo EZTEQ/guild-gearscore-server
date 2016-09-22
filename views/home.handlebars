@@ -1,4 +1,27 @@
 <div class="ui center aligned container">
-      <h1 class="ui header" style="margin-top:3em;">Guild GearScore</h1>
-      <p>Find out how well your guild is equipped.</p>
+	<h1 class="ui header" style="margin-top:3em;">Guild GearScore</h1>
+	<p>Find out how well your guild is equipped.</p>
+	<div class="ui two column centered grid">
+		<div class="column">
+			<form class="ui form">
+				<div class="fields">
+					<div class="two wide field haspopup" data-content="Currently EU only.">
+						<label>Region</label>
+						<select class="ui dropdown"  disabled>
+							<option value="">EU</option>
+						</select>
+					</div>
+					<div class="seven wide field">
+						<label>Realm</label>
+						<input type="text" name="realm" placeholder="Mal'Ganis">
+					</div>
+					<div class="seven wide field">
+						<label>Guild</label>
+						<input type="text" name="guild" placeholder="Aeonic">
+					</div>
+				</div>
+				<button class="fluid ui button" onClick="">Let's go!</button>
+			</form>
+		</div>
+	</div>
 </div>
