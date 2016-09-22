@@ -12,6 +12,7 @@
     "apicache": "^0.2.2",
     "compression": "^1.6.2",
     "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
     "rest": "^2.0.0"
   }
 }

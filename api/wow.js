@@ -1,3 +1,4 @@
+/* Battle.net API wrapper */
 const rest = require('rest');
 const mime = require('rest/interceptor/mime');
 
@@ -16,7 +17,7 @@ exports.call = (params, callback) => {
 function get(endPoint, callback) {
 	let apiUrl = 'https://eu.api.battle.net/wow/';
 	apiUrl += endPoint;
-	apiUrl += '&locale=de_DE';
+	//apiUrl += '&locale=de_DE';
 	apiUrl += '&apikey=' + _apiKey;
 	client(apiUrl).then((response) => {
 		callback(response);
