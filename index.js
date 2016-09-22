@@ -1,19 +1,21 @@
-const express = require('express');
-const app = express();
+'use strict';
+
+const app = require('express')();
 const cache = require('apicache').middleware;
-const wow = require('./wow');
+const compression = require('compression');
+const logger = require('./log/log');
+const wow = require('./battle-net/wow');
 
 const port = process.env.PORT || 8080;
 app.set("port", port);
 
-wow.setApiKey('PLEASE ENTER YOUR BATTLE NET API KEY HERE!');
+app.use(logger);
+app.use(compression());
 
-app.get('/:type/:realm/:guild/:field', cache('5 minutes'), (req, res) => {
-	wow.call(req.params, (apiResponse) => {
-		res.status(apiResponse.status.code);
-		res.json(apiResponse.entity);
-	});
-});
+const api = require('./routes/api');
+app.use('/api', api);
+const web = require('./routes/web');
+app.use('/', web);
 
 app.listen(port, () => {
 	console.log('Guild Gearscore API listening on port %d...', port);

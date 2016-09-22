@@ -10,7 +10,7 @@ exports.setApiKey = (apiKey) => {
 }
 
 exports.call = (params, callback) => {
-	get(params.type + '/' + params.realm + '/' + params.guild + '?fields=' + params.field, callback);
+	get(params.type + '/' + params.realm + '/' + params.param + '?fields=' + params.field, callback);
 }
 
 function get(endPoint, callback) {
