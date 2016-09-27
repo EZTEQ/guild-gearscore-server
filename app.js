@@ -27,5 +27,5 @@ app.use('/', web);
 
 /* let's go' */
 app.listen(port, () => {
-	console.log('Guild Gearscore API listening on port %d...', port);
+	console.log('Guild Gearscore listening on port %d...', port);
 });
