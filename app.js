@@ -1,11 +1,9 @@
 /* dependencies, dependencies, dependencies  */
 const express = require('express')
 const app = express();
-const exphbs = require('express-handlebars');
 const cache = require('apicache').middleware;
 const compression = require('compression');
 const logger = require('./log/log');
-const wow = require('./api/wow');
 
 /* view engine */
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -21,9 +19,7 @@ app.use(express.static('./public'));
 
 /* routing */
 const api = require('./routes/api');
-app.use('/api', api);
-const web = require('./routes/web');
-app.use('/', web);
+app.use('/', api);
 
 /* let's go' */
 app.listen(port, () => {
