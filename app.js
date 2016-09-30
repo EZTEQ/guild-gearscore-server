@@ -3,18 +3,15 @@ const express = require('express')
 const app = express();
 const cache = require('apicache').middleware;
 const compression = require('compression');
+const cors = require('cors');
 const logger = require('./log/log');
-
-/* view engine */
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
-app.enable('view cache');
 
 /* app configuration */
 const port = process.env.PORT || 8080;
 app.set('port', port);
 app.use(logger);
 app.use(compression());
+app.use(cors());
 app.use(express.static('./public'));
 
 /* routing */
