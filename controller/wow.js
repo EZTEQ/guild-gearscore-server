@@ -19,6 +19,7 @@ function get(endPoint, callback) {
 	apiUrl += endPoint;
 	//apiUrl += '&locale=de_DE';
 	apiUrl += '&apikey=' + _apiKey;
+	apiUrl = encodeURI(apiUrl);
 	client(apiUrl).then((response) => {
 		callback(response);
 	});
