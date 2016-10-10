@@ -1,6 +1,6 @@
 const express = require('express');
 const cache = require('apicache').middleware;
-const wow = require('../controller/wow');
+const wow = require('../api/wow');
 
 wow.setApiKey(process.env.APIKEY);
 

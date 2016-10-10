@@ -4,6 +4,9 @@ const mime = require('rest/interceptor/mime');
 
 const client = rest.wrap(mime);
 
+const RateLimiter = require('limiter').RateLimiter;
+const limiter = new RateLimiter(90, 'second');
+
 let _apiKey;
 
 exports.setApiKey = (apiKey) => {
@@ -20,7 +23,9 @@ function get(endPoint, callback) {
 	//apiUrl += '&locale=de_DE';
 	apiUrl += '&apikey=' + _apiKey;
 	apiUrl = encodeURI(apiUrl);
-	client(apiUrl).then((response) => {
-		callback(response);
+	limiter.removeTokens(1, function() {
+		client(apiUrl).then((response) => {
+			callback(response);
+		});
 	});
 }
