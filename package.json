@@ -1,5 +1,5 @@
 {
-  "name": "guild-gearscore",
+  "name": "guild-gearscore-server",
   "version": "0.0.1",
   "description": "",
   "main": "app.js",
