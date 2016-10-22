@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "extends": "airbnb-base",
+  "rules": {
+    "import/extensions": ["error", "always", {
+      "js": "never"
+    }],
+
+    //custom rules
+    "indent": ["error", 4],
+    "max-len": ["error", 120],
+    "no-console": 0
+  },
+  "extensions": [".js"]
+}

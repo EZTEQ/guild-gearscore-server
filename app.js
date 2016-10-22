@@ -1,24 +1,28 @@
 /* dependencies, dependencies, dependencies  */
-const express = require('express')
-const app = express();
-const cache = require('apicache').middleware;
+const express = require('express');
 const compression = require('compression');
 const cors = require('cors');
 const logger = require('./log/log');
+const api = require('./routes/api');
+
+const app = express();
 
 /* app configuration */
 const port = process.env.PORT || 8080;
 app.set('port', port);
 app.use(logger);
 app.use(compression());
-app.use(cors());
+
+if (process.env.CORS === 'true') {
+    app.use(cors());
+}
+
 app.use(express.static('./public'));
 
 /* routing */
-const api = require('./routes/api');
 app.use('/', api);
 
 /* let's go' */
 app.listen(port, () => {
-	console.log('Guild Gearscore listening on port %d...', port);
+    console.log('Guild Gearscore listening on port %d...', port);
 });
