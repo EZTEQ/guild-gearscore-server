@@ -11,9 +11,12 @@ exports.call = (params, callback) => {
         switch (params.type) {
         case 'character':
             blizzard.wow.character(['items'], argsObject)
-            .then((response) => {
-                callback(response.data);
-            });
+                .then((response) => {
+                    callback(response.data);
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                });
             break;
         case 'guild':
         default:
