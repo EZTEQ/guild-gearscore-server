@@ -12,7 +12,7 @@ exports.call = (params, callback) => {
         case 'character':
             blizzard.wow.character(['items'], argsObject)
                 .then((response) => {
-                    callback(response.data);
+                    callback(response);
                 })
                 .catch((reason) => {
                     console.log(reason);
