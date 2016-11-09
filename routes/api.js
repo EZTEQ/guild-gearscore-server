@@ -6,10 +6,16 @@ module.exports = (() => {
     const router = express.Router(); // eslint-disable-line
 
     router.get('/:type(guild|character)/:realm/:param/:field', cache('60 minutes'), (req, res) => {
-        wow.call(req.params, (apiResponse) => {
-            res.status(apiResponse.status);
-            res.json(apiResponse.data);
-        });
+        wow.call(req.params,
+            function successCallback(response) {
+                res.status(response.status);
+                res.json(response.data);
+            },
+            function errorCallback(error) {
+                //TODO Add logging
+                res.status(error.response.status);
+                res.json(error.response.data);
+            });
     });
 
     console.log('API router loaded.');

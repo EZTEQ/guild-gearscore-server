@@ -4,7 +4,7 @@ const blizzard = require('blizzard.js').initialize({ apikey: process.env.APIKEY 
 
 const limiter = new RateLimiter(90, 'second');
 
-exports.call = (params, callback) => {
+exports.call = (params, successCallback, errorCallback) => {
     limiter.removeTokens(1, () => {
         const argsObject = { realm: params.realm, name: params.param, origin: 'eu' };
 
@@ -12,20 +12,20 @@ exports.call = (params, callback) => {
         case 'character':
             blizzard.wow.character(['items'], argsObject)
                 .then((response) => {
-                    callback(response);
+                    successCallback(response);
                 })
                 .catch((reason) => {
-                    console.log(reason);
+                    errorCallback(reason);
                 });
             break;
         case 'guild':
         default:
             blizzard.wow.guild(['members'], argsObject)
                 .then((response) => {
-                    callback(response);
+                    successCallback(response);
                 })
                 .catch((reason) => {
-                    console.log(reason);
+                    errorCallback(reason);
                 });
             break;
         }
