@@ -1,5 +1,5 @@
 # Guild Gearscore Server
-The Guild Gearscore Server gives access to the WoW Community APIs with caching and is designed for use with the Guild GearScore web app.
+The Guild Gearscore Server gives access to the WoW Community APIs with caching and is designed for use with the [Guild GearScore web app](https://github.com/EZTEQ/guild-gearscore-web).
 
 ## How to run
 ```bash
