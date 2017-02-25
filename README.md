@@ -3,16 +3,16 @@ The Guild Gearscore Server gives access to the WoW Community APIs with caching a
 
 ## How to run
 ```bash
-#Get the dependencies
-$ npm install
+# Get the dependencies
+$ yarn # or 'npm install'
 
 # Configuration
-$ export APIKEY=yourapikey #REQUIRED - dev.battle.net API key
-$ export PORT=80 #OPTIONAL - defaults to 8080
-$ export CORS=true #OPTIONAL - enables CORS - defaults to false 
+$ export APIKEY=yourapikey      #REQUIRED - dev.battle.net API key
+$ export PORT=80                #OPTIONAL - defaults to 8080
+$ export CORS=true              #OPTIONAL - enables CORS - defaults to false 
 
-$ export NODE_ENV=production #RECOMMENDED
+$ export NODE_ENV=production    #RECOMMENDED
 
-#Run it
-$ node app.js
+# Run it
+$ yarn start
 ```

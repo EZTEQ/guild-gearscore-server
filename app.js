@@ -17,8 +17,6 @@ if (process.env.CORS === 'true') {
     app.use(cors());
 }
 
-app.use(express.static('./public'));
-
 /* routing */
 app.use('/', api);
 
