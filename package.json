@@ -9,16 +9,16 @@
   "author": "Mark Hähnel",
   "license": "Apache-2.0",
   "dependencies": {
-    "apicache": "^0.3.5",
-    "blizzard.js": "^1.6.0",
-    "compression": "^1.6.2",
-    "cors": "^2.8.1",
-    "express": "^4.14.0",
-    "limiter": "^1.1.0"
+    "apicache": "0.8.3",
+    "blizzard.js": "1.6.0",
+    "compression": "1.6.2",
+    "cors": "2.8.1",
+    "express": "4.14.1",
+    "limiter": "1.1.0"
   },
   "devDependencies": {
-    "eslint": "^3.9.1",
-    "eslint-config-airbnb-base": "^10.0.1",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint": "3.16.1",
+    "eslint-config-airbnb-base": "11.1.0",
+    "eslint-plugin-import": "2.2.0"
   }
 }
