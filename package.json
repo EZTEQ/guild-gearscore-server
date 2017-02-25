@@ -11,6 +11,7 @@
   "dependencies": {
     "apicache": "0.8.3",
     "blizzard.js": "1.6.0",
+    "bottleneck": "^1.15.1",
     "compression": "1.6.2",
     "cors": "2.8.1",
     "express": "4.14.1"

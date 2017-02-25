@@ -1,6 +1,12 @@
 const express = require('express');
+const Bottleneck = require('bottleneck');
+
 const blizzard = require('blizzard.js').initialize({ apikey: process.env.APIKEY });
 const cache = require('apicache').middleware;
+
+const limiter = new Bottleneck(40, 15); // 40 requests concurrent, 1 request every 15ms
+
+const MAXLVL = 110;
 
 module.exports = (() => {
     const router = express.Router();
@@ -14,10 +20,16 @@ module.exports = (() => {
 
         blizzard.wow.guild(keys, { realm, name, origin })
             .then((response) => {
-                const guildMembers = response.data.members;
+                const guildRes = response.data;
+                guildRes.members = guildRes.members.filter(x => x.character.level === MAXLVL);
+                const guildMembers = guildRes.members;
 
-                const getAverageItemLevel = member => blizzard.wow.character(['items'], { realm, name: member.character.name, origin });
-                const actions = guildMembers.map(getAverageItemLevel);
+                const getAverageItemLevel = (member) => {
+                    const cRealm = member.character.realm;
+                    const cName = member.character.name;
+                    return blizzard.wow.character(['items'], { realm: cRealm, name: cName, origin });
+                };
+                const actions = guildMembers.map(member => limiter.schedule(getAverageItemLevel, member));
 
                 Promise.all(actions)
                     .then((members) => {
@@ -27,7 +39,10 @@ module.exports = (() => {
                             character.averageItemLevel = items.averageItemLevel;
                             character.averageItemLevelEquipped = items.averageItemLevelEquipped;
                         });
-                        res.json(response.data);
+                        res.json(guildRes);
+                    })
+                    .catch((reason) => {
+                        console.log(reason);
                     });
             })
             .catch(err => res.status(err.response.status).json(err.response.data));
