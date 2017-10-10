@@ -9,12 +9,12 @@
   "author": "Mark Hähnel",
   "license": "Apache-2.0",
   "dependencies": {
-    "apicache": "0.8.4",
-    "blizzard.js": "1.6.1",
-    "bottleneck": "^1.15.1",
-    "compression": "1.6.2",
-    "cors": "2.8.1",
-    "express": "4.15.2"
+    "apicache": "1.1.0",
+    "blizzard.js": "2.0.1",
+    "bottleneck": "^1.16.0",
+    "compression": "1.7.1",
+    "cors": "2.8.4",
+    "express": "4.16.2"
   },
   "devDependencies": {
     "eslint": "3.18.0",
